@@ -16,7 +16,7 @@ namespace Group2_Project_MainProgram
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CRUDOperationForm());
+            Application.Run(new LoginandRegisterForm());
         }
     }
 }

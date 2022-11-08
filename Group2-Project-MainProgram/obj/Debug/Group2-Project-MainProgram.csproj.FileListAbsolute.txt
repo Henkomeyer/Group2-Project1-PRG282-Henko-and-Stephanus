@@ -1,0 +1,12 @@
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\bin\Debug\Group2-Project-MainProgram.exe.config
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\bin\Debug\Group2-Project-MainProgram.exe
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\bin\Debug\Group2-Project-MainProgram.pdb
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.AssemblyReference.cache
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.CRUDOperationForm.resources
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.LoginandRegisterForm.resources
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.Properties.Resources.resources
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.RegisterForm.resources
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.GenerateResource.cache
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.CoreCompileInputs.cache
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.exe
+C:\Users\User\Downloads\PRG282-Project1-Group2\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.pdb
