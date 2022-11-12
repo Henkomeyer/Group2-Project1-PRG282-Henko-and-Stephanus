@@ -13,6 +13,8 @@ namespace Group2_Project_MainProgram
 {
     public partial class LoginandRegisterForm : Form
     {
+        DataHandler DataRead = new DataHandler();
+        FileHandler Fileread = new FileHandler(); 
         public LoginandRegisterForm()
         {
             InitializeComponent();
@@ -27,9 +29,24 @@ namespace Group2_Project_MainProgram
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            CRUDOperationForm home = new CRUDOperationForm();
-            home.Show();
-            this.Hide(); //Navigation between forms /Navigates to base form/ CRUD FORM
+            try
+            {
+                if (DataRead.getuser(Fileread.Readfromlist()).Contains(tbxname.Text) && DataRead.getpassword(Fileread.Readfromlist()).Contains(tbxloginpass.Text))
+                {
+                    MessageBox.Show("Welcome {name} , enjoy your day", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CRUDOperationForm home = new CRUDOperationForm();
+                    home.Show();
+                    this.Hide(); //Navigation between forms /Navigates to base form/ CRUD FORM
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+            
+           
         }
 
         private void btnseepass_Click(object sender, EventArgs e)

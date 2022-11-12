@@ -22,5 +22,6 @@ namespace Group2_Project_MainProgram
         {
             return $"{this.Username},{this.Password}"; 
         }
+
     }
 }
