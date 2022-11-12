@@ -32,10 +32,10 @@ namespace Group2_Project_MainProgram
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnregister = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbxconfirmpass = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxpassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tbxname = new System.Windows.Forms.TextBox();
@@ -50,10 +50,10 @@ namespace Group2_Project_MainProgram
             this.groupBox1.Controls.Add(this.btnreg);
             this.groupBox1.Controls.Add(this.btnregister);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tbxconfirmpass);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbxpassword);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tbxname);
@@ -90,15 +90,15 @@ namespace Group2_Project_MainProgram
             this.label6.TabIndex = 15;
             this.label6.Text = "Re-Enter your password:";
             // 
-            // textBox2
+            // tbxconfirmpass
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox2.Location = new System.Drawing.Point(140, 434);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(534, 26);
-            this.textBox2.TabIndex = 14;
+            this.tbxconfirmpass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxconfirmpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxconfirmpass.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.tbxconfirmpass.Location = new System.Drawing.Point(140, 434);
+            this.tbxconfirmpass.Name = "tbxconfirmpass";
+            this.tbxconfirmpass.Size = new System.Drawing.Size(534, 26);
+            this.tbxconfirmpass.TabIndex = 14;
             // 
             // label5
             // 
@@ -122,15 +122,15 @@ namespace Group2_Project_MainProgram
             this.label2.TabIndex = 12;
             this.label2.Text = "Enter a strong Password:";
             // 
-            // textBox1
+            // tbxpassword
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(138, 303);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(534, 26);
-            this.textBox1.TabIndex = 11;
+            this.tbxpassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbxpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxpassword.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.tbxpassword.Location = new System.Drawing.Point(138, 303);
+            this.tbxpassword.Name = "tbxpassword";
+            this.tbxpassword.Size = new System.Drawing.Size(534, 26);
+            this.tbxpassword.TabIndex = 11;
             // 
             // label1
             // 
@@ -212,10 +212,10 @@ namespace Group2_Project_MainProgram
         private System.Windows.Forms.TextBox tbxname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbxconfirmpass;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxpassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnregister;
         private System.Windows.Forms.Button btnreg;
