@@ -17,11 +17,19 @@ namespace Group2_Project_MainProgram
             InitializeComponent();
         }
 
-        private void btnregister_Click(object sender, EventArgs e)
+        private void btnregister_Click(object sender, EventArgs e) // Button to open Login Form
         {
             LoginandRegisterForm back = new LoginandRegisterForm();
             back.Show();
             this.Hide(); //Navigation between forms
+        }
+
+        private void btnreg_Click(object sender, EventArgs e) //Submit Registration Button
+        {
+            if (true)
+            {
+
+            }
         }
     }
 }
