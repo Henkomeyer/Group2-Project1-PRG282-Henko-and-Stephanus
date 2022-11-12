@@ -23,5 +23,13 @@ namespace Group2_Project_MainProgram
             }
 
         }
+
+        public List<string> Readfromlist()
+        {
+            List<string> readerdata = new List<string>();
+            readerdata = File.ReadAllLines("UserDetail.txt").ToList();
+
+            return readerdata; 
+        }
     }
 }
