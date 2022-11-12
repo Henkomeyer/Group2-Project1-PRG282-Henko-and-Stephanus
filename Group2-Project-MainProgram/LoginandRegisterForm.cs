@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,6 +30,20 @@ namespace Group2_Project_MainProgram
             CRUDOperationForm home = new CRUDOperationForm();
             home.Show();
             this.Hide(); //Navigation between forms /Navigates to base form/ CRUD FORM
+        }
+
+        private void btnseepass_Click(object sender, EventArgs e)
+        {
+            tbxloginpass.UseSystemPasswordChar = false;
+            btnseepass.Visible = false; 
+            btnhidepass.Visible = true;
+        }
+
+        private void btnhidepass_Click(object sender, EventArgs e)
+        {
+            tbxloginpass.UseSystemPasswordChar = true;
+            
+            btnseepass.Visible = true; 
         }
     }
 }

@@ -52,6 +52,8 @@
     <Compile Include="CRUDOperationForm.Designer.cs">
       <DependentUpon>CRUDOperationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataHandler.cs" />
+    <Compile Include="FileHandler.cs" />
     <Compile Include="LoginandRegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

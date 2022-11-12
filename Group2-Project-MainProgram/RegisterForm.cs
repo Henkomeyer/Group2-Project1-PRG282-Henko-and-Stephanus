@@ -26,9 +26,11 @@ namespace Group2_Project_MainProgram
 
         private void btnreg_Click(object sender, EventArgs e) //Submit Registration Button
         {
-            if (true)
+            if (tbxpassword.Text != tbxconfirmpass.Text)
             {
-
+                MessageBox.Show("Error with Passwords", "The Password does not match, please try again!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                tbxpassword.Clear();
+                tbxconfirmpass.Clear(); 
             }
         }
     }
