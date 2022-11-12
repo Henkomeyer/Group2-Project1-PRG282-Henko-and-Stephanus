@@ -12,6 +12,9 @@ namespace Group2_Project_MainProgram
 {
     public partial class RegisterForm : Form
     {
+        LoginandRegisterForm back = new LoginandRegisterForm();
+        List<string> temp = new List<string>();  //List for temporary reading
+        FileHandler Filer = new FileHandler(); 
         public RegisterForm()
         {
             InitializeComponent();
@@ -19,19 +22,37 @@ namespace Group2_Project_MainProgram
 
         private void btnregister_Click(object sender, EventArgs e) // Button to open Login Form
         {
-            LoginandRegisterForm back = new LoginandRegisterForm();
+            
             back.Show();
             this.Hide(); //Navigation between forms
         }
 
         private void btnreg_Click(object sender, EventArgs e) //Submit Registration Button
         {
-            if (tbxpassword.Text != tbxconfirmpass.Text)
+
+            if (tbxconfirmpass.Text != "" || tbxname.Text != ""|| tbxconfirmpass.Text != "")
             {
-                MessageBox.Show("Error with Passwords", "The Password does not match, please try again!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                tbxpassword.Clear();
-                tbxconfirmpass.Clear(); 
+                if (tbxpassword.Text != tbxconfirmpass.Text)
+                {
+                    MessageBox.Show( "The Password does not match, please try again!","Error with Passwords", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxpassword.Clear();
+                    tbxconfirmpass.Clear();
+                }
+                else
+                {
+                    UserDetail user = new UserDetail(tbxname.Text, tbxpassword.Text);
+                    temp.Add(user.Storeinfo());
+                    Filer.WritetoText(temp);
+                    this.Hide();
+                    back.Show(); 
+
+                }
             }
+            else
+            {
+                MessageBox.Show("One of the Fields is empty", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
