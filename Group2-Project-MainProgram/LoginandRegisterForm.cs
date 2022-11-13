@@ -62,5 +62,10 @@ namespace Group2_Project_MainProgram
             
             btnseepass.Visible = true; 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
