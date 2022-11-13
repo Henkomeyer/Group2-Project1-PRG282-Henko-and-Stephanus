@@ -30,12 +30,12 @@ namespace Group2_Project_MainProgram
         private void btnreg_Click(object sender, EventArgs e) //Submit Registration Button
         {
 
-            if (tbxconfirmpass.Text != "" || tbxname.Text != ""|| tbxconfirmpass.Text != "")
+            if (tbxpassword.Text != "" && tbxname.Text != ""|| tbxconfirmpass.Text != "")
             {
                 if (tbxpassword.Text != tbxconfirmpass.Text)
                 {
                     MessageBox.Show( "The Password does not match, please try again!","Error with Passwords", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbxpassword.Clear();
+                    
                     tbxconfirmpass.Clear();
                 }
                 else
