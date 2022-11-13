@@ -45,7 +45,7 @@ namespace Group2_Project_MainProgram
                     {
                         MessageBox.Show("We could not find your records in the Database , please try again!", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbxloginpass.Clear();
-                        tbxname.Clear(); 
+                        
                     }
                 }
                 catch (Exception er)
