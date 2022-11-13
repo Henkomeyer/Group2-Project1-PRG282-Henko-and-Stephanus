@@ -29,20 +29,33 @@ namespace Group2_Project_MainProgram
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            try
+            if (tbxname.Text != "" && tbxloginpass.Text != "")
             {
-                if (DataRead.getuser(Fileread.Readfromlist()).Contains(tbxname.Text) && DataRead.getpassword(Fileread.Readfromlist()).Contains(tbxloginpass.Text))
+                try
                 {
-                    MessageBox.Show("Welcome {name} , enjoy your day", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (DataRead.getuser(Fileread.Readfromlist()).Contains(tbxname.Text) && DataRead.getpassword(Fileread.Readfromlist()).Contains(tbxloginpass.Text))
+                    {
+                        MessageBox.Show("Welcome " + tbxname.Text + ", enjoy your day", "Welcome", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    CRUDOperationForm home = new CRUDOperationForm();
-                    home.Show();
-                    this.Hide(); //Navigation between forms /Navigates to base form/ CRUD FORM
+                        CRUDOperationForm home = new CRUDOperationForm();
+                        home.Show();
+                        this.Hide(); //Navigation between forms /Navigates to base form/ CRUD FORM
+                    }
+                    else
+                    {
+                        MessageBox.Show("We could not find your records in the Database , please try again!", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbxloginpass.Clear();
+                        tbxname.Clear(); 
+                    }
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message, "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception er)
+            else
             {
-                MessageBox.Show(er.Message, "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("One or more of the fields are empty, please input your credentials!", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
             
