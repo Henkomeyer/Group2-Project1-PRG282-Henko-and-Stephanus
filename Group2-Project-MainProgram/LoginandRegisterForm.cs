@@ -43,7 +43,7 @@ namespace Group2_Project_MainProgram
                     }
                     else
                     {
-                        MessageBox.Show("We could not find your records in the Database , please try again!", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("We could not find you ! Make sure that you have been registered , please try again!", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         tbxloginpass.Clear();
                         
                     }
