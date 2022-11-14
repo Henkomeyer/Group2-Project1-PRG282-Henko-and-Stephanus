@@ -16,5 +16,19 @@ namespace Group2_Project_MainProgram
         {
             InitializeComponent();
         }
+
+        private void btnstudents_Click(object sender, EventArgs e)
+        {
+            StudentForm form = new StudentForm();
+            form.ShowDialog();
+            this.Close();
+        }
+
+        private void btnaddmodule_Click(object sender, EventArgs e)
+        {
+            ModuleForm form = new ModuleForm();
+            form.ShowDialog();
+            this.Close();
+        }
     }
 }
