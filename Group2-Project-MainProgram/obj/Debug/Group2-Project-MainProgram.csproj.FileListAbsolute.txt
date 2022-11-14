@@ -36,3 +36,5 @@ C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Pr
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.CoreCompileInputs.cache
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.exe
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.pdb
+C:\Users\User\Source\Repos\Henkomeyer\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.ModuleForm.resources
+C:\Users\User\Source\Repos\Henkomeyer\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.StudentForm.resources
