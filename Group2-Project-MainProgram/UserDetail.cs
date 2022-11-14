@@ -20,7 +20,7 @@ namespace Group2_Project_MainProgram
 
         public string Storeinfo()
         {
-            return $"{this.Username},{this.Password}"; 
+            return $"{this.Username},{this.Password}";
         }
 
     }
