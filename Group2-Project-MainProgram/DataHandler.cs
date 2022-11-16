@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Group2_Project_MainProgram
 {
@@ -35,78 +38,69 @@ namespace Group2_Project_MainProgram
 
         public DataHandler() { }
         string conn = "Server= (local); Initial Catalog= PRG_282_Project_Database; Integrated Security= true";
-        public void AddStudent()
+        public void AddStudent(int number, string name, byte[] image, DateTime dob, string gender, int phone, string address, string codes )
         {
-            SqlConnection connection = new SqlConnection(conn);
-            try
+            using (SqlConnection connection = new SqlConnection(conn))
             {
+                SqlCommand cmd = new SqlCommand("spAddStudent", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StudentNumber", number);
+                cmd.Parameters.AddWithValue("@StudentName", name);
+                cmd.Parameters.AddWithValue("@DoB", dob);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+                cmd.Parameters.AddWithValue("@Address", address);
+                cmd.Parameters.AddWithValue("@ModuleCodes", codes);
                 connection.Open();
-                MessageBox.Show("Connection Opened");
+                cmd.ExecuteNonQuery();
             }
-            catch
-            {
-                MessageBox.Show("Connection Failed");
-            }
-            string query = @"INSERT INTO [Student Info] ([Student Number], [Student Name and Surname], [Student Image], DoB, Gender, Phone, Address, [Module Codes]) VALUES (tbxStudentNumber.text, tbxStudentName.text, pbxStudentImage, dtpStudentDoB, cbxGender.text, tbxStudentPhone.text, tbxStudentAddress.text, tbxStudentModule.text)";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Student has been successfully added.");
-            connection.Close();
         }
-        public void UpdateStudent()
+        public void UpdateStudent(int number, string name, byte image, DateTime dob, string gender, int phone, string address, string codes)
         {
-            SqlConnection connection = new SqlConnection(conn);
-            try
+            using (SqlConnection connection = new SqlConnection(conn))
             {
+                SqlCommand cmd = new SqlCommand("spUpdateStudent", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StudentNumber", number);
+                cmd.Parameters.AddWithValue("@StudentName", name);
+                cmd.Parameters.AddWithValue("@StudentImage", image);
+                cmd.Parameters.AddWithValue("@DoB", dob);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@Phone", phone);
+                cmd.Parameters.AddWithValue("@Address", address);
+                cmd.Parameters.AddWithValue("@ModuleCodes", codes);
                 connection.Open();
-                MessageBox.Show("Connection Opened");
+                cmd.ExecuteNonQuery();
             }
-            catch
-            {
-                MessageBox.Show("Connection Failed");
-            }
-            string query = @"UPDATE [Student Info] ([Student Number], [Student Name and Surname], [Student Image], DoB, Gender, Phone, Address, [Module Codes]) VALUES (tbxStudentNumber.text, tbxStudentName.text, pbxStudentImage, dtpStudentDoB, cbxGender.text, tbxStudentPhone.text, tbxStudentAddress.text, tbxStudentModule.text) ";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Student's information has been successfully Updated");
-            connection.Close();
         }
-        public void DeleteStudent()
+        public void DeleteStudent(int number)
         {
-            SqlConnection connection = new SqlConnection(conn);
-            try
+            using (SqlConnection connection = new SqlConnection(conn))
             {
+                SqlCommand cmd = new SqlCommand("spDeleteStudent", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StudentNumber", number);
                 connection.Open();
-                MessageBox.Show("Connection Opened");
+                cmd.ExecuteNonQuery();
             }
-            catch
-            {
-                MessageBox.Show("Connection Failed");
-            }
-            string query = @"DELETE FROM [Student Info] WHERE [Student Number]= tbxStudentNumber.text";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Student information has been successfully deleted");
-            connection.Close();
         }
-        public void SearchStudent()
+        public DataTable SearchStudent(int number)
         {
-            SqlConnection connection = new SqlConnection(conn);
-            try
+            using (SqlConnection connection = new SqlConnection(conn))
             {
+                SqlCommand cmd = new SqlCommand("spSearchStudent", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@StudentNumber", number);
                 connection.Open();
-                MessageBox.Show("Connection Opened");
+                DataTable dt = new DataTable();
+                using(SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    dt.Load(dr);
+                    return dt;
+                }
             }
-            catch
-            {
-                MessageBox.Show("Connection Failed");
-            }
-            string query = @"SELECT * FROM [Student Info] WHERE [Student Number]= tbxSearchStudent.text";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
         }
-        public void AddModule(int code, string name, string desc, string links)
+        public void AddModule(string code, string name, string desc, string links)
         {
             using (SqlConnection connection = new SqlConnection(conn))
             {
@@ -179,5 +173,28 @@ namespace Group2_Project_MainProgram
             adapter.Fill(dt);
             return dt;
         }
+        public byte[] convertImage()
+        {
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                StudentForm studentForm = new StudentForm();
+                if (studentForm.pbxStudentImage.Image != null)
+                {
+                    SqlCommand cmd = new SqlCommand("spAddStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    MemoryStream ms = new MemoryStream();
+                    ms = new MemoryStream();
+                    studentForm.pbxStudentImage.Image.Save(ms, ImageFormat.Jpeg);
+                    byte[] photo_aray = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(photo_aray, 0, photo_aray.Length);
+                    cmd.Parameters.AddWithValue("@StudentImage", photo_aray);
+                    return photo_aray;
+                }
+            }
+            return photo_aray;
+        }
     }
+
+
 }

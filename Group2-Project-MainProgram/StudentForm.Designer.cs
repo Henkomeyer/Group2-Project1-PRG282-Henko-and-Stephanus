@@ -332,7 +332,7 @@
         private System.Windows.Forms.TextBox tbxStudentName;
         private System.Windows.Forms.DateTimePicker dtpStudentDoB;
         private System.Windows.Forms.ComboBox cbxGender;
-        private System.Windows.Forms.PictureBox pbxStudentImage;
+        public System.Windows.Forms.PictureBox pbxStudentImage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnaddstudent;

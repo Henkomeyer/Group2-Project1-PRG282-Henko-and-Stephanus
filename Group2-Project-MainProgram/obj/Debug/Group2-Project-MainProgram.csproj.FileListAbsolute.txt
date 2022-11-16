@@ -27,7 +27,6 @@ C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Pr
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\bin\Debug\Group2-Project-MainProgram.pdb
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.AssemblyReference.cache
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.csproj.SuggestedBindingRedirects.cache
-C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.AddStudentForm.resources
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.CRUDOperationForm.resources
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.LoginandRegisterForm.resources
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.Properties.Resources.resources
@@ -38,3 +37,5 @@ C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Pr
 C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2-Project-MainProgram.pdb
 C:\Users\User\Source\Repos\Henkomeyer\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.ModuleForm.resources
 C:\Users\User\Source\Repos\Henkomeyer\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.StudentForm.resources
+C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.ModuleForm.resources
+C:\Users\shoff\Source\Repos\Group2-Project1-PRG282-Henko-and-Stephanus\Group2-Project-MainProgram\obj\Debug\Group2_Project_MainProgram.StudentForm.resources

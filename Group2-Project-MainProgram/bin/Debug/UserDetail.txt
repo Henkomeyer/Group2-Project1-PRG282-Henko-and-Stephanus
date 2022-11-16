@@ -11,3 +11,5 @@ Johhny,Bravo
 Johnny,Bravo123
 Peet,Van Rensburg
 Jo,Black@12
+Stefan,password
+declan,Password

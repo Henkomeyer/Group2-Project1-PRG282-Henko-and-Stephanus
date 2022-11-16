@@ -27,7 +27,7 @@ namespace Group2_Project_MainProgram
 
         private void btnAddModule_Click(object sender, EventArgs e)
         {
-            handler.AddModule(int.Parse(tbxModuleCode.Text),tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
+            handler.AddModule(tbxModuleCode.Text,tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
             MessageBox.Show("Module has been successfulyl added");
         }
 
