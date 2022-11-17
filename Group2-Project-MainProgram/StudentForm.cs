@@ -24,7 +24,7 @@ namespace Group2_Project_MainProgram
         {
             if (tbxStudentNumber.Text != "" && tbxStudentName.Text != "" || tbxStudentPhone.Text != "" || tbxStudentAddress.Text != "" || tbxStudentModule.Text != "")
             {
-                //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
+                handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
             }
             else
             {
@@ -37,7 +37,7 @@ namespace Group2_Project_MainProgram
         {
             if (tbxStudentNumber.Text != "" && tbxStudentName.Text != "" || tbxStudentPhone.Text != "" || tbxStudentAddress.Text != "" || tbxStudentModule.Text != "")
             {
-                //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
+                handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
             }
             else
             {

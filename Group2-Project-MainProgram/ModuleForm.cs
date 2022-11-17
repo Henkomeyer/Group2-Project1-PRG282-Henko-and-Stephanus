@@ -74,7 +74,7 @@ namespace Group2_Project_MainProgram
 
         private void btnSearchModule_Click(object sender, EventArgs e)
         {
-            if (tbxModuleCode.Text != "")
+            if (tbxSearchModule.Text != "")
             {
                 try
                 {

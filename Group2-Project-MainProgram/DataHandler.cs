@@ -48,6 +48,7 @@ namespace Group2_Project_MainProgram
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@StudentNumber", number);
                     cmd.Parameters.AddWithValue("@StudentName", name);
+                    cmd.Parameters.AddWithValue("@StudentImage", image);
                     cmd.Parameters.AddWithValue("@DoB", dob);
                     cmd.Parameters.AddWithValue("@Gender", gender);
                     cmd.Parameters.AddWithValue("@Phone", phone);
@@ -63,7 +64,7 @@ namespace Group2_Project_MainProgram
             }
                
         }
-        public void UpdateStudent(int number, string name, byte image, DateTime dob, string gender, int phone, string address, string codes)
+        public void UpdateStudent(int number, string name, byte[] image, DateTime dob, string gender, int phone, string address, string codes)
         {
             try
             {
@@ -247,27 +248,27 @@ namespace Group2_Project_MainProgram
                 throw new Exception(er.Message);
             }
         }
-        //public byte[] convertImage()
-        //{
-        //    using (SqlConnection connection = new SqlConnection(conn))
-        //    {
-        //        StudentForm studentForm = new StudentForm();
-        //        if (studentForm.pbxStudentImage.Image != null)
-        //        {
-        //            SqlCommand cmd = new SqlCommand("spAddStudent", connection);
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            MemoryStream ms = new MemoryStream();
-        //            ms = new MemoryStream();
-        //            studentForm.pbxStudentImage.Image.Save(ms, ImageFormat.Jpeg);
-        //            byte[] photo_aray = new byte[ms.Length];
-        //            ms.Position = 0;
-        //            ms.Read(photo_aray, 0, photo_aray.Length);
-        //            cmd.Parameters.AddWithValue("@StudentImage", photo_aray);
-        //            return photo_aray;
-        //        }
-        //    }
-        //    return photo_aray;
-        //}
+        public byte[] convertImage()
+        {
+            byte[] photo_aray = null;
+            using (SqlConnection connection = new SqlConnection(conn))
+            {
+                StudentForm studentForm = new StudentForm();
+                if (studentForm.pbxStudentImage.Image != null)
+                {
+                    SqlCommand cmd = new SqlCommand("spAddStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    MemoryStream ms = new MemoryStream();
+                    ms = new MemoryStream();
+                    studentForm.pbxStudentImage.Image.Save(ms, ImageFormat.Jpeg);
+                    photo_aray = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(photo_aray, 0, photo_aray.Length);
+                    cmd.Parameters.AddWithValue("@StudentImage", photo_aray);
+                }
+            }
+            return photo_aray;
+        }
     }
 
 
