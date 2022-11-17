@@ -18,34 +18,61 @@ namespace Group2_Project_MainProgram
         }
         DataHandler handler = new DataHandler();
 
-        private void btnBackModule_Click(object sender, EventArgs e)
+        private void btnBackModule_Click(object sender, EventArgs e) // Button for going back
         {
             CRUDOperationForm form = new CRUDOperationForm();
-            form.ShowDialog();
+            form.Show();
             this.Close();
         }
 
-        private void btnAddModule_Click(object sender, EventArgs e)
+        private void btnAddModule_Click(object sender, EventArgs e) // Button for adding a module
         {
-            handler.AddModule(tbxModuleCode.Text,tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
-            MessageBox.Show("Module has been successfulyl added");
+            if ((tbxModuleCode.Text != "" && tbxModuleName.Text != "") || tbxModuleDescription.Text != "" || tbxResourceLinks.Text != "" )
+            {
+                handler.AddModule(tbxModuleCode.Text, tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
+            }
+            else
+            {
+                MessageBox.Show("One or more of the fields are empty","Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnUpdateModule_Click(object sender, EventArgs e)
         {
-            handler.UpdateModule(int.Parse(tbxModuleCode.Text), tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
-            MessageBox.Show("Module has been successfulyl Updated");
+            if (tbxModuleName.Text != "" && tbxModuleCode.Text != "" || tbxModuleDescription.Text != "" || tbxResourceLinks.Text != "")
+            {
+                handler.UpdateModule(int.Parse(tbxModuleCode.Text), tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
+            }
+            else
+            {
+                MessageBox.Show("One or more of the fields are empty", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDeleteModule_Click(object sender, EventArgs e)
         {
-            handler.DeleteModule(int.Parse(tbxModuleCode.Text));
-            MessageBox.Show("Module has been succesfully deleted");
+            if (tbxModuleCode.Text != "")
+            {
+                handler.DeleteModule(int.Parse(tbxModuleCode.Text));
+            }
+            else
+            {
+                MessageBox.Show("Input a module code that you would like to delete", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+           
         }
 
         private void btnSearchModule_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = handler.SearchModule(int.Parse(tbxModuleCode.Text));
+            if (tbxModuleCode.Text != "")
+            {
+                dataGridView1.DataSource = handler.SearchModule(int.Parse(tbxModuleCode.Text));
+            }
+            else
+            {
+                MessageBox.Show("Input a module code that you would like to Search for", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnDisplayModules_Click(object sender, EventArgs e)
