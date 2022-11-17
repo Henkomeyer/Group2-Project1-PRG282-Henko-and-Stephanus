@@ -40,6 +40,8 @@ namespace Group2_Project_MainProgram
         string conn = "Server= (local); Initial Catalog= PRG_282_Project_Database; Integrated Security= true";
         public void AddStudent(int number, string name, byte[] image, DateTime dob, string gender, int phone, string address, string codes )
         {
+            try
+            {
                 using (SqlConnection connection = new SqlConnection(conn))
                 {
                     SqlCommand cmd = new SqlCommand("spAddStudent", connection);
@@ -54,66 +56,82 @@ namespace Group2_Project_MainProgram
                     connection.Open();
                     cmd.ExecuteNonQuery();
                 }
-           
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                SqlCommand cmd = new SqlCommand("spAddStudent", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@StudentNumber", number);
-                cmd.Parameters.AddWithValue("@StudentName", name);
-                cmd.Parameters.AddWithValue("@DoB", dob);
-                cmd.Parameters.AddWithValue("@Gender", gender);
-                cmd.Parameters.AddWithValue("@Phone", phone);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@ModuleCodes", codes);
-                connection.Open();
-                cmd.ExecuteNonQuery();
             }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+               
         }
         public void UpdateStudent(int number, string name, byte image, DateTime dob, string gender, int phone, string address, string codes)
         {
-            using (SqlConnection connection = new SqlConnection(conn))
+            try
             {
-                SqlCommand cmd = new SqlCommand("spUpdateStudent", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@StudentNumber", number);
-                cmd.Parameters.AddWithValue("@StudentName", name);
-                cmd.Parameters.AddWithValue("@StudentImage", image);
-                cmd.Parameters.AddWithValue("@DoB", dob);
-                cmd.Parameters.AddWithValue("@Gender", gender);
-                cmd.Parameters.AddWithValue("@Phone", phone);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@ModuleCodes", codes);
-                connection.Open();
-                cmd.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spUpdateStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@StudentNumber", number);
+                    cmd.Parameters.AddWithValue("@StudentName", name);
+                    cmd.Parameters.AddWithValue("@StudentImage", image);
+                    cmd.Parameters.AddWithValue("@DoB", dob);
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@Phone", phone);
+                    cmd.Parameters.AddWithValue("@Address", address);
+                    cmd.Parameters.AddWithValue("@ModuleCodes", codes);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "There was a problem with Updating this student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
         public void DeleteStudent(int number)
         {
-            using (SqlConnection connection = new SqlConnection(conn))
+            try
             {
-                SqlCommand cmd = new SqlCommand("spDeleteStudent", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@StudentNumber", number);
-                connection.Open();
-                cmd.ExecuteNonQuery();
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spDeleteStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@StudentNumber", number);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+          
         }
         public DataTable SearchStudent(int number)
         {
-            using (SqlConnection connection = new SqlConnection(conn))
+            try
             {
-                SqlCommand cmd = new SqlCommand("spSearchStudent", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@StudentNumber", number);
-                connection.Open();
-                DataTable dt = new DataTable();
-                using(SqlDataReader dr = cmd.ExecuteReader())
+                using (SqlConnection connection = new SqlConnection(conn))
                 {
-                    dt.Load(dr);
-                    return dt;
+                    SqlCommand cmd = new SqlCommand("spSearchStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@StudentNumber", number);
+                    connection.Open();
+                    DataTable dt = new DataTable();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        dt.Load(dr);
+                        return dt;
+                    }
                 }
             }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "There was an error searching for a student", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception(er.Message);
+            }
+            
         }
         public void AddModule(string code, string name, string desc, string links)  // Code for adding a module to database
         {
@@ -199,7 +217,7 @@ namespace Group2_Project_MainProgram
             catch (Exception er)
             {   
                 MessageBox.Show(er.Message,"There was an error searching for the module",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                throw;
+                throw new Exception(er.Message);
             }
            
         }

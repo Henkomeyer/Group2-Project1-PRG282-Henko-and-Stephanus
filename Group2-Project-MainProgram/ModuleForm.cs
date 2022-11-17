@@ -39,7 +39,7 @@ namespace Group2_Project_MainProgram
 
         private void btnUpdateModule_Click(object sender, EventArgs e)
         {
-            if (tbxModuleName.Text != "" && tbxModuleCode.Text != "" || tbxModuleDescription.Text != "" || tbxResourceLinks.Text != "")
+            if ((tbxModuleName.Text != "" && tbxModuleCode.Text != "") || tbxModuleDescription.Text != "" || tbxResourceLinks.Text != "")
             {
                 handler.UpdateModule(int.Parse(tbxModuleCode.Text), tbxModuleName.Text, tbxModuleDescription.Text, tbxResourceLinks.Text);
             }
@@ -53,7 +53,16 @@ namespace Group2_Project_MainProgram
         {
             if (tbxModuleCode.Text != "")
             {
-                handler.DeleteModule(int.Parse(tbxModuleCode.Text));
+                try
+                {
+                  handler.DeleteModule(int.Parse(tbxModuleCode.Text));
+                }
+                catch (Exception er)
+                {
+
+                    MessageBox.Show(er.Message, "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {
@@ -67,7 +76,16 @@ namespace Group2_Project_MainProgram
         {
             if (tbxModuleCode.Text != "")
             {
-                dataGridView1.DataSource = handler.SearchModule(int.Parse(tbxModuleCode.Text));
+                try
+                {
+                  dataGridView1.DataSource = handler.SearchModule(int.Parse(tbxModuleCode.Text));
+                }
+                catch (Exception er)
+                {
+
+                    MessageBox.Show(er.Message, "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else
             {
@@ -77,7 +95,7 @@ namespace Group2_Project_MainProgram
 
         private void btnDisplayModules_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = handler.DisplayModules();
+                dataGridView1.DataSource = handler.DisplayModules();
         }
     }
 }
