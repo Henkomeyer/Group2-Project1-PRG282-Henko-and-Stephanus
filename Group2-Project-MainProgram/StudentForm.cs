@@ -22,31 +22,76 @@ namespace Group2_Project_MainProgram
 
         private void btnaddstudent_Click(object sender, EventArgs e)
         {
-            //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); ;
-            //MessageBox.Show("Student added successfully");
+            if (tbxStudentNumber.Text != "" && tbxStudentName.Text != "" || tbxStudentPhone.Text != "" || tbxStudentAddress.Text != "" || tbxStudentModule.Text != "")
+            {
+                //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
+            }
+            else
+            {
+                MessageBox.Show("One or more of the fields are empty", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btnupdateinfo_Click(object sender, EventArgs e)
         {
-            //handler.UpdateStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, pbxStudentImage, dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text);
-            //MessageBox.Show("Student updated successfully");
+            if (tbxStudentNumber.Text != "" && tbxStudentName.Text != "" || tbxStudentPhone.Text != "" || tbxStudentAddress.Text != "" || tbxStudentModule.Text != "")
+            {
+                //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); 
+            }
+            else
+            {
+                MessageBox.Show("One or more of the fields are empty", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         private void btndeletestudent_Click(object sender, EventArgs e)
         {
-            handler.DeleteStudent(int.Parse(tbxStudentNumber.Text));
-            MessageBox.Show("Student has been deleted");
+            if (tbxStudentNumber.Text != "")
+            {
+                try
+                {
+                   handler.DeleteStudent(int.Parse(tbxStudentNumber.Text));
+                }
+                catch (Exception er)
+                {
+                   MessageBox.Show(er.Message,"Commit Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Input a student Number that you would like to delete", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnsearchstudent_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = handler.SearchStudent(int.Parse(tbxSearchStudent.Text));
+            if (tbxSearchStudent.Text != "") 
+            {
+                try
+                {
+                  dataGridView1.DataSource = handler.SearchStudent(int.Parse(tbxSearchStudent.Text));
+                }
+                catch (Exception er)
+                {
+
+                  MessageBox.Show(er.Message, "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Input the Student Number for the student you are searching for", "Commit Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
-        private void btnBackStudent_Click(object sender, EventArgs e)
+        private void btnBackStudent_Click(object sender, EventArgs e) // Back Button
         {
             CRUDOperationForm form = new CRUDOperationForm();
-            form.ShowDialog();
+            form.Show();
             this.Close();
         }
 
