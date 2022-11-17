@@ -40,6 +40,21 @@ namespace Group2_Project_MainProgram
         string conn = "Server= (local); Initial Catalog= PRG_282_Project_Database; Integrated Security= true";
         public void AddStudent(int number, string name, byte[] image, DateTime dob, string gender, int phone, string address, string codes )
         {
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spAddStudent", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@StudentNumber", number);
+                    cmd.Parameters.AddWithValue("@StudentName", name);
+                    cmd.Parameters.AddWithValue("@DoB", dob);
+                    cmd.Parameters.AddWithValue("@Gender", gender);
+                    cmd.Parameters.AddWithValue("@Phone", phone);
+                    cmd.Parameters.AddWithValue("@Address", address);
+                    cmd.Parameters.AddWithValue("@ModuleCodes", codes);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+           
             using (SqlConnection connection = new SqlConnection(conn))
             {
                 SqlCommand cmd = new SqlCommand("spAddStudent", connection);
@@ -100,63 +115,96 @@ namespace Group2_Project_MainProgram
                 }
             }
         }
-        public void AddModule(string code, string name, string desc, string links)
+        public void AddModule(string code, string name, string desc, string links)  // Code for adding a module to database
         {
-            using (SqlConnection connection = new SqlConnection(conn))
+            try
             {
-                SqlCommand cmd = new SqlCommand("spAddModules", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ModuleCode", code);
-                cmd.Parameters.AddWithValue("@ModuleName", name);
-                cmd.Parameters.AddWithValue("@ModuleDesc", desc);
-                cmd.Parameters.AddWithValue("@ModuleLinks", links);
-                connection.Open();
-                cmd.ExecuteNonQuery ();
-            }
-        }
-        public void UpdateModule(int code, string name, string desc, string links)
-        {
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                SqlCommand cmd = new SqlCommand("spUpdateModule", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ModuleCode", code);
-                cmd.Parameters.AddWithValue("@ModuleName", name);
-                cmd.Parameters.AddWithValue("@ModuleDesc", desc);
-                cmd.Parameters.AddWithValue("@ModuleLinks", links);
-                connection.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-        public void DeleteModule(int code)
-        {
-            using(SqlConnection connection = new SqlConnection(conn))
-            {
-                SqlCommand cmd = new SqlCommand ("spDeleteModule", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ModuleCode", code);
-                connection.Open ();
-                cmd.ExecuteNonQuery();
-            }
-        }
-        public DataTable SearchModule(int code)
-        {
-            using (SqlConnection connection = new SqlConnection(conn))
-            {
-                SqlCommand cmd = new SqlCommand("spSearchModule", connection);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ModuleCode", code);
-                connection.Open();
-                DataTable dt = new DataTable();
-                using(SqlDataReader dr = cmd.ExecuteReader())
+                using (SqlConnection connection = new SqlConnection(conn))
                 {
-                    dt.Load(dr);
-                    return dt;
+                    SqlCommand cmd = new SqlCommand("spAddModules", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ModuleCode", code);
+                    cmd.Parameters.AddWithValue("@ModuleName", name);
+                    cmd.Parameters.AddWithValue("@ModuleDesc", desc);
+                    cmd.Parameters.AddWithValue("@ModuleLinks", links);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
                 }
             }
+            catch (Exception er)
+            {
+
+                MessageBox.Show(er.Message,"There was an error adding a module",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+           
+        }
+        public void UpdateModule(int code, string name, string desc, string links)  // Code for updating a module
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spUpdateModule", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ModuleCode", code);
+                    cmd.Parameters.AddWithValue("@ModuleName", name);
+                    cmd.Parameters.AddWithValue("@ModuleDesc", desc);
+                    cmd.Parameters.AddWithValue("@ModuleLinks", links);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "There was an error updating a module", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+        public void DeleteModule(int code)  // Code for Deleting a module
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spDeleteModule", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ModuleCode", code);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "There was an error updating a module", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public DataTable SearchModule(int code) // Code for searcing for a module
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    SqlCommand cmd = new SqlCommand("spSearchModule", connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ModuleCode", code);
+                    connection.Open();
+                    DataTable dt = new DataTable();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        dt.Load(dr);
+                        return dt;
+                    }
+                }
+            }
+            catch (Exception er)
+            {   
+                MessageBox.Show(er.Message,"There was an error searching for the module",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                throw;
+            }
+           
         }
         public DataTable DisplayStudents()
-        {
+        { 
             SqlConnection con = new SqlConnection(conn);
             SqlDataAdapter adapter = new SqlDataAdapter("spGetStudents", con);
             adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
@@ -164,36 +212,44 @@ namespace Group2_Project_MainProgram
             adapter.Fill(dt);
             return dt;
         }
-        public DataTable DisplayModules()
+        public DataTable DisplayModules()  // Code to diaplay a module
         {
-            SqlConnection con = new SqlConnection(conn);
-            SqlDataAdapter adapter = new SqlDataAdapter("spGetModules", con);
-            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            return dt;
-        }
-        public byte[] convertImage()
-        {
-            using (SqlConnection connection = new SqlConnection(conn))
+            try
             {
-                StudentForm studentForm = new StudentForm();
-                if (studentForm.pbxStudentImage.Image != null)
-                {
-                    SqlCommand cmd = new SqlCommand("spAddStudent", connection);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    MemoryStream ms = new MemoryStream();
-                    ms = new MemoryStream();
-                    studentForm.pbxStudentImage.Image.Save(ms, ImageFormat.Jpeg);
-                    byte[] photo_aray = new byte[ms.Length];
-                    ms.Position = 0;
-                    ms.Read(photo_aray, 0, photo_aray.Length);
-                    cmd.Parameters.AddWithValue("@StudentImage", photo_aray);
-                    return photo_aray;
-                }
+                SqlConnection con = new SqlConnection(conn);
+                SqlDataAdapter adapter = new SqlDataAdapter("spGetModules", con);
+                adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
             }
-            return photo_aray;
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "There was an error displaying the modules", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Exception(er.Message);
+            }
         }
+        //public byte[] convertImage()
+        //{
+        //    using (SqlConnection connection = new SqlConnection(conn))
+        //    {
+        //        StudentForm studentForm = new StudentForm();
+        //        if (studentForm.pbxStudentImage.Image != null)
+        //        {
+        //            SqlCommand cmd = new SqlCommand("spAddStudent", connection);
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            MemoryStream ms = new MemoryStream();
+        //            ms = new MemoryStream();
+        //            studentForm.pbxStudentImage.Image.Save(ms, ImageFormat.Jpeg);
+        //            byte[] photo_aray = new byte[ms.Length];
+        //            ms.Position = 0;
+        //            ms.Read(photo_aray, 0, photo_aray.Length);
+        //            cmd.Parameters.AddWithValue("@StudentImage", photo_aray);
+        //            return photo_aray;
+        //        }
+        //    }
+        //    return photo_aray;
+        //}
     }
 
 

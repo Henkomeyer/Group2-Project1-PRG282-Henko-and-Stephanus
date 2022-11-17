@@ -22,14 +22,14 @@ namespace Group2_Project_MainProgram
 
         private void btnaddstudent_Click(object sender, EventArgs e)
         {
-            handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); ;
-            MessageBox.Show("Student added successfully");
+            //handler.AddStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, handler.convertImage(), dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text); ;
+            //MessageBox.Show("Student added successfully");
         }
 
         private void btnupdateinfo_Click(object sender, EventArgs e)
         {
-            handler.UpdateStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, pbxStudentImage, dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text);
-            MessageBox.Show("Student updated successfully");
+            //handler.UpdateStudent(int.Parse(tbxStudentNumber.Text), tbxStudentName.Text, pbxStudentImage, dtpStudentDoB.Value, cbxGender.Text, int.Parse(tbxStudentPhone.Text), tbxStudentAddress.Text, tbxStudentModule.Text);
+            //MessageBox.Show("Student updated successfully");
         }
 
         private void btndeletestudent_Click(object sender, EventArgs e)
